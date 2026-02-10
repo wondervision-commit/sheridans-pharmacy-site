@@ -1,0 +1,40 @@
+{
+  "businessName": "Sheridan's Pharmacy",
+  "tagline": "Local pharmacy in Roselawn Shopping Centre",
+  "contact": {
+    "phoneDisplay": "01 6405740",
+    "phoneTel": "+35316405740",
+    "whatsappDisplay": "085 158 9211",
+    "whatsappWaMe": "https://wa.me/353851589211",
+    "whatsappPrefillText": "Hi Sheridan's Pharmacy, I have a question.",
+    "email": "info@sheridanspharmacy.ie",
+    "faxDisplay": "01 6405713"
+  },
+  "address": {
+    "line1": "Sheridan's Pharmacy",
+    "line2": "Roselawn Shopping Centre",
+    "cityRegion": "Dublin 15",
+    "country": "Ireland"
+  },
+  "openingHours": {
+    "Mon": "09:00–19:00",
+    "Tue": "09:00–19:00",
+    "Wed": "09:00–19:00",
+    "Thu": "09:00–19:00",
+    "Fri": "09:00–19:00",
+    "Sat": "09:00–18:00",
+    "Sun": "Closed",
+    "Notes": "Closed on Sundays and bank holidays."
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/sheridanspharmacy",
+    "facebook": "https://www.facebook.com/sheridanspharmacy"
+  },
+  "integrations": {
+    "epharmacyBookingUrl": "https://app.epharmacy.io/pharmacies/655fe123-a8bc-4189-bc67-9b58dc13a5b5/book/?category="
+  },
+  "maps": {
+    "embedUrl": "https://www.google.com/maps?q=Roselawn+Shopping+Centre,+Dublin+15&output=embed",
+    "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=Roselawn+Shopping+Centre%2C%20Dublin%2015"
+  }
+}

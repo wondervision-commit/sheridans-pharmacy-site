@@ -1,0 +1,59 @@
+[
+  {
+    "id": "des-sheridan",
+    "sortOrder": 1,
+    "name": "Des Sheridan",
+    "role": "Pharmacist & Owner",
+    "isOwner": true,
+    "bio": "Des founded Sheridan’s Pharmacy with a simple goal: provide clear, trustworthy healthcare advice in a welcoming local setting. He believes strongly in patient-first care and taking the time to explain things properly.",
+    "highlights": ["Owner", "Medication advice", "Patient-first care"]
+  },
+  {
+    "id": "nicole-bharaj",
+    "sortOrder": 2,
+    "name": "Nicole Bharaj",
+    "role": "Retail Manager",
+    "bio": "Nicole oversees the day-to-day running of the shop, making sure everything from stock levels to customer service runs smoothly. She’s known for her calm approach and attention to detail.",
+    "highlights": ["Store operations", "Customer service", "Merchandising"]
+  },
+  {
+    "id": "monica-walsh",
+    "sortOrder": 3,
+    "name": "Monica Walsh",
+    "role": "Retail Manager",
+    "bio": "Monica focuses on team support and customer experience. She enjoys finding practical ways to improve workflows and ensure every customer interaction is a positive one.",
+    "highlights": ["Team leadership", "Customer experience", "Process improvements"]
+  },
+  {
+    "id": "aisling-oconnor",
+    "sortOrder": 4,
+    "name": "Aisling O’Connor",
+    "role": "Pharmacy Technician",
+    "bio": "Aisling supports the dispensary with a strong focus on accuracy and efficiency. She plays a key role in keeping everything running safely behind the scenes.",
+    "highlights": ["Dispensary support", "Accuracy", "Organisation"]
+  },
+  {
+    "id": "kieran-murphy",
+    "sortOrder": 5,
+    "name": "Kieran Murphy",
+    "role": "Pharmacy Assistant",
+    "bio": "Kieran is often the first point of contact in the shop. He enjoys helping customers find what they need quickly and explaining options in clear, simple terms.",
+    "highlights": ["Front-of-shop support", "Product guidance", "Friendly service"]
+  },
+  {
+    "id": "leah-hughes",
+    "sortOrder": 6,
+    "name": "Leah Hughes",
+    "role": "Beauty & Wellness Advisor",
+    "bio": "Leah helps customers choose skincare and wellness products that suit their needs and lifestyle. She focuses on simple routines and practical advice.",
+    "highlights": ["Skincare advice", "Wellness products", "Practical routines"]
+  },
+  {
+    "id": "patrick-nolan",
+    "sortOrder": 7,
+    "name": "Patrick Nolan",
+    "role": "Delivery & Customer Support",
+    "bio": "Patrick assists with local deliveries and customer queries, helping ensure people receive their medication and essentials on time.",
+    "highlights": ["Local delivery", "Customer support", "Reliability"]
+  }
+]
