@@ -15,7 +15,6 @@ export default function RootLayout({
 }) {
   const nav = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
     { href: "/vaccines", label: "Vaccines" },
     { href: "/downloads", label: "Downloads" },
     { href: "/about", label: "About Us" },

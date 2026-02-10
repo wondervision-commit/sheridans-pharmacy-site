@@ -32,7 +32,7 @@ export default function DownloadsPage() {
               {category.items.map((item) => (
                 <a
                   key={item.url}
-                  href={item.url}
+                  href={encodeURI(item.url)}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-between rounded-2xl border bg-white px-4 py-4 hover:bg-gray-50"
