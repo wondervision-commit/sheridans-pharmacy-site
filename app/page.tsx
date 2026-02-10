@@ -37,7 +37,7 @@ export default function Home() {
           </button>
 
           {/* Quick actions */}
-          <QuickActions mode="bar" className="col-span-2" />
+          <QuickActions mode="bar" className="col-span-2 mt-3" />
 
           {/* Hours */}
           <div className="mt-5 rounded-xl bg-gray-50 p-4 text-sm">
