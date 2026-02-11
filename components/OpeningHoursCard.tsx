@@ -97,9 +97,7 @@ export default function OpeningHoursCard({
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-sm font-semibold text-gray-900">{title}</div>
-          <div className="mt-1 text-sm text-gray-600">
-            {site.address.line2}, {site.address.cityRegion}
-          </div>
+          
         </div>
 
         {status ? (

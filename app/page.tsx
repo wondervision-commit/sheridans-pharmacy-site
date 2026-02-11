@@ -1,23 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import site from "../content/site.json";
 import VaccineRegistrationModal from "../components/VaccineRegistrationModal";
 import QuickActions from "../components/QuickActions";
 import OpeningHoursCard from "../components/OpeningHoursCard";
 
-
-function waLink(base: string, text: string) {
-  const encoded = encodeURIComponent(text);
-  return `${base}?text=${encoded}`;
-}
-
 export default function Home() {
   const [openModal, setOpenModal] = useState(false);
-
-  const whatsappHref = useMemo(() => {
-    return waLink(site.contact.whatsappWaMe, site.contact.whatsappPrefillText);
-  }, []);
 
   return (
     <>
@@ -38,12 +28,12 @@ export default function Home() {
             Vaccine Registration
           </button>
 
-          {/* Quick actions */}
-          <QuickActions mode="bar" className="col-span-2 mt-3" />
-
-          {/* Hours */}
-          <OpeningHoursCard className="mt-5" />
+          {/* Quick actions (Call + WhatsApp) */}
+          <QuickActions mode="bar" className="mt-3" />
         </section>
+
+        {/* Hours (above contact) */}
+        <OpeningHoursCard className="mt-5" />
 
         {/* Contact strip */}
         <section className="mt-6 rounded-2xl border bg-white p-5">
@@ -84,19 +74,19 @@ export default function Home() {
 
       {/* Sticky mobile action bar */}
       <div className="mobile-bar fixed inset-x-0 bottom-0 z-40 md:hidden">
-              <div className="mx-auto max-w-5xl px-3 py-3">
-                  <div className="grid grid-cols-3 gap-2">
-                  <QuickActions mode="bar" className="col-span-2" />
-                  <button
-                      type="button"
-                      onClick={() => setOpenModal(true)}
-                      className="btn-primary rounded-xl px-3 py-3 text-center text-sm font-semibold"
-                  >
-                      Vaccine
-                  </button>
-                  </div>
-              </div>
+        <div className="mx-auto max-w-5xl px-3 py-3">
+          <div className="grid grid-cols-3 gap-2">
+            <QuickActions mode="bar" className="col-span-2" />
+            <button
+              type="button"
+              onClick={() => setOpenModal(true)}
+              className="btn-primary rounded-xl px-3 py-3 text-center text-sm font-semibold"
+            >
+              Vaccine
+            </button>
           </div>
+        </div>
+      </div>
 
       <VaccineRegistrationModal
         isOpen={openModal}
