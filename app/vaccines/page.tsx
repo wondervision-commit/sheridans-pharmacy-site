@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import QuickActions from "../../components/QuickActions";
 import site from "../../content/site.json";
 import VaccineRegistrationModal from "../../components/VaccineRegistrationModal";
 
@@ -101,11 +102,7 @@ export default function VaccinesPage() {
             Vaccine Registration
           </button>
 
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            <a className="btn-secondary rounded-xl px-3 py-3 text-center text-sm font-semibold" href={`tel:${site.contact.phoneTel}`}>Call</a>
-            <a className="btn-secondary rounded-xl px-3 py-3 text-center text-sm font-semibold" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a>
-            <a className="btn-secondary rounded-xl px-3 py-3 text-center text-sm font-semibold" href={site.maps.directionsUrl} target="_blank" rel="noreferrer">Directions</a>
-          </div>
+          <QuickActions className="mt-3" />
         </section>
 
         <section className="mt-6">

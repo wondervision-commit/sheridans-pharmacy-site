@@ -1,0 +1,30 @@
+{
+  "title": "Professional Services Pricing",
+  "subtitle": "Sheridan’s Pharmacy",
+  "intro": "To support you in managing your health, we provide a range of professional services. Below is pricing information for services provided by this pharmacy. Some services may be free of charge or reduced cost depending on eligibility. If you have any questions, please ask in store.",
+  "note": "Please note that these professional service fees do not necessarily include the cost of any medication provided.",
+  "items": [
+    { "id": "flu-vaccination", "name": "Flu Vaccination Service", "price": "€35.00" },
+    { "id": "injection-administration", "name": "Injection Administration Service", "price": "NA" },
+    { "id": "shingles-vaccination", "name": "Shingles Vaccination Service", "price": "€25.00" },
+    { "id": "pneumococcal-vaccination", "name": "Pneumococcal Vaccination Service", "price": "€25.00" },
+    { "id": "bp-measurement", "name": "Blood Pressure Measurement", "price": "€5.00" },
+    { "id": "bp-24hr", "name": "24 Hour Blood Pressure Measuring", "price": "NA" },
+    { "id": "diabetes-screening", "name": "Diabetes Screening", "price": "NA" },
+    { "id": "cholesterol-screening", "name": "Cholesterol Screening", "price": "NA" },
+    { "id": "weight-management", "name": "Weight Management Service", "price": "NA" },
+    {
+      "id": "pharmaceutical-care",
+      "name": "Pharmaceutical Care Service (safe supply of medication on prescription)",
+      "price": "From €7.00 to €9.50 per medication"
+    },
+    {
+      "id": "blister-packing",
+      "name": "Blister Packing Service (medication compliance aid)",
+      "price": "€10.00 per (4 weeks)"
+    },
+    { "id": "instalment-supply", "name": "Instalment Supply Service", "price": "NA" },
+    { "id": "emergency-contraception", "name": "Emergency Contraception Service", "price": "€0.00" },
+    { "id": "erectile-dysfunction", "name": "Erectile Dysfunction Medication", "price": "€5.00" }
+  ]
+}

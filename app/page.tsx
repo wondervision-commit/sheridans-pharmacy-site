@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import site from "../content/site.json";
 import VaccineRegistrationModal from "../components/VaccineRegistrationModal";
 import QuickActions from "../components/QuickActions";
+import OpeningHoursCard from "../components/OpeningHoursCard";
+
 
 function waLink(base: string, text: string) {
   const encoded = encodeURIComponent(text);
@@ -40,20 +42,7 @@ export default function Home() {
           <QuickActions mode="bar" className="col-span-2 mt-3" />
 
           {/* Hours */}
-          <div className="mt-5 rounded-xl bg-gray-50 p-4 text-sm">
-            <div className="font-semibold">Opening Hours</div>
-            <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-gray-700">
-              <div>Mon–Fri</div>
-              <div>{site.openingHours.Mon}</div>
-              <div>Saturday</div>
-              <div>{site.openingHours.Sat}</div>
-              <div>Sunday</div>
-              <div>{site.openingHours.Sun}</div>
-            </div>
-            <div className="mt-2 text-xs text-gray-500">
-              {site.openingHours.Notes}
-            </div>
-          </div>
+          <OpeningHoursCard className="mt-5" />
         </section>
 
         {/* Contact strip */}

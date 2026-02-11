@@ -6,6 +6,7 @@ import site from "../../content/site.json";
 import VaccineRegistrationModal from "../../components/VaccineRegistrationModal";
 import QuickActions from "../../components/QuickActions";
 import SocialLinks from "../../components/SocialLinks";
+import OpeningHoursCard from "../../components/OpeningHoursCard";
 
 export default function ContactPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -82,40 +83,7 @@ export default function ContactPage() {
         </section>
 
         {/* Opening hours */}
-        <section className="mt-6 rounded-2xl border bg-white p-5">
-          <div className="text-sm font-semibold">Opening Hours</div>
-
-          <div className="mt-2 rounded-xl bg-gray-50 p-4 text-sm">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-gray-700">
-              <div>Monday</div>
-              <div>{site.openingHours.Mon}</div>
-
-              <div>Tuesday</div>
-              <div>{site.openingHours.Tue}</div>
-
-              <div>Wednesday</div>
-              <div>{site.openingHours.Wed}</div>
-
-              <div>Thursday</div>
-              <div>{site.openingHours.Thu}</div>
-
-              <div>Friday</div>
-              <div>{site.openingHours.Fri}</div>
-
-              <div>Saturday</div>
-              <div>{site.openingHours.Sat}</div>
-
-              <div>Sunday</div>
-              <div>{site.openingHours.Sun}</div>
-            </div>
-
-            {site.openingHours.Notes ? (
-              <div className="mt-2 text-xs text-gray-500">
-                {site.openingHours.Notes}
-              </div>
-            ) : null}
-          </div>
-        </section>
+        <OpeningHoursCard className="mt-6" />
 
         {/* Map */}
         <section className="mt-6 overflow-hidden rounded-2xl border bg-white">
