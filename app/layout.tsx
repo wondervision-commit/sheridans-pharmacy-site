@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import AnnouncementBar from "../components/AnnouncementBar";
 
 export const metadata: Metadata = {
   title: "Sheridan's Pharmacy — Dublin 15",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className="bg-gray-50 text-gray-900">
         <GoogleAnalytics />
         <Header nav={nav} />
+        <AnnouncementBar />
         {children}
         <Footer />
       </body>
