@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { trackEvent } from "../lib/gtag";
 
 type NavItem = { href: string; label: string };
 
@@ -105,6 +106,11 @@ export default function Header({ nav }: { nav: NavItem[] }) {
 
           <Link
             href="/vaccines"
+            onClick={() =>
+              trackEvent("vaccine_registration_click", {
+                source: "header_desktop",
+              })
+            }
             className="btn-primary ml-3 rounded-xl px-4 py-2 text-sm font-semibold"
           >
             Vaccine Registration
@@ -149,7 +155,12 @@ export default function Header({ nav }: { nav: NavItem[] }) {
 
           <Link
             href="/vaccines"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              trackEvent("vaccine_registration_click", {
+                source: "header_mobile",
+              });
+              setOpen(false);
+            }}
             className="btn-primary mt-4 block rounded-xl px-3 py-3 text-center text-sm font-semibold"
           >
             Vaccine Registration

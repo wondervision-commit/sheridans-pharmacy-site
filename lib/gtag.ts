@@ -13,3 +13,11 @@ export function pageview(url: string) {
     page_path: url,
   });
 }
+
+export function trackEvent(
+  eventName: string,
+  params?: Record<string, string | number | boolean | null | undefined>
+) {
+  if (!GA_MEASUREMENT_ID || typeof window === "undefined" || !window.gtag) return;
+  window.gtag("event", eventName, params ?? {});
+}

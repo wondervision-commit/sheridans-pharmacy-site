@@ -1,5 +1,8 @@
+"use client";
+
 import downloads from "../../content/downloads.json";
 import PageHero from "../../components/PageHero";
+import { trackEvent } from "../../lib/gtag";
 
 type DownloadItem = {
   title: string;
@@ -34,6 +37,13 @@ export default function DownloadsPage() {
                   href={encodeURI(item.url)}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    trackEvent("download_open", {
+                      file_name: item.title,
+                      file_url: item.url,
+                      category: category.name,
+                    })
+                  }
                   className="flex items-center justify-between rounded-2xl border bg-white px-4 py-4 hover:bg-gray-50"
                 >
                   <div className="min-w-0">

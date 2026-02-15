@@ -6,6 +6,7 @@ import site from "../../content/site.json";
 import VaccineRegistrationModal from "../../components/VaccineRegistrationModal";
 import PageHero from "../../components/PageHero";
 import MobileActionBar from "../../components/MobileActionBar";
+import { trackEvent } from "../../lib/gtag";
 
 type VaccineCard = {
   title: string;
@@ -87,7 +88,10 @@ export default function VaccinesPage() {
         >
           <button
             type="button"
-            onClick={() => setOpenModal(true)}
+            onClick={() => {
+              trackEvent("vaccine_registration_click", { source: "vaccines_hero" });
+              setOpenModal(true);
+            }}
             className="btn-primary mt-5 w-full rounded-xl px-4 py-3 text-sm font-semibold"
           >
             Vaccine Registration
@@ -145,7 +149,10 @@ export default function VaccinesPage() {
           </p>
           <button
             type="button"
-            onClick={() => setOpenModal(true)}
+            onClick={() => {
+              trackEvent("vaccine_registration_click", { source: "vaccines_footer" });
+              setOpenModal(true);
+            }}
             className="btn-primary mt-4 w-full rounded-xl px-4 py-3 text-sm font-semibold"
           >
             Vaccine Registration

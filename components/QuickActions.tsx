@@ -6,6 +6,7 @@ import PhoneIcon from "./icons/PhoneIcon";
 import WhatsappIcon from "./icons/WhatsappIcon";
 import LocationIcon from "./icons/LocationIcon";
 import { waLink } from "../lib/links";
+import { trackEvent } from "../lib/gtag";
 
 type QuickActionsMode = "full" | "bar";
 
@@ -30,7 +31,15 @@ export default function QuickActions({ className = "", mode = "full" }: Props) {
         className,
       ].join(" ")}
     >
-      <a className={commonBtn} href={`tel:${site.contact.phoneTel}`}>
+      <a
+        className={commonBtn}
+        href={`tel:${site.contact.phoneTel}`}
+        onClick={() =>
+          trackEvent("contact_call_click", {
+            source: `quick_actions_${mode}`,
+          })
+        }
+      >
         <span className="inline-flex items-center justify-center gap-2">
           <PhoneIcon />
           <span>Call</span>
@@ -42,6 +51,11 @@ export default function QuickActions({ className = "", mode = "full" }: Props) {
         href={whatsappHref}
         target="_blank"
         rel="noreferrer"
+        onClick={() =>
+          trackEvent("contact_whatsapp_click", {
+            source: `quick_actions_${mode}`,
+          })
+        }
       >
         <span className="inline-flex items-center justify-center gap-2">
           <WhatsappIcon />

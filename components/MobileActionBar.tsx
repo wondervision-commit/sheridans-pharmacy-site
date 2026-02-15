@@ -1,6 +1,7 @@
 "use client";
 
 import QuickActions from "./QuickActions";
+import { trackEvent } from "../lib/gtag";
 
 type Props = {
   onVaccineClick: () => void;
@@ -14,7 +15,12 @@ export default function MobileActionBar({ onVaccineClick }: Props) {
           <QuickActions mode="bar" className="col-span-2" />
           <button
             type="button"
-            onClick={onVaccineClick}
+            onClick={() => {
+              trackEvent("vaccine_registration_click", {
+                source: "mobile_action_bar",
+              });
+              onVaccineClick();
+            }}
             className="btn-primary rounded-xl px-3 py-3 text-center text-sm font-semibold"
           >
             Vaccine

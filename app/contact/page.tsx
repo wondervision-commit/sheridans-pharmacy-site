@@ -10,6 +10,7 @@ import OpeningHoursCard from "../../components/OpeningHoursCard";
 import PageHero from "../../components/PageHero";
 import MapSection from "../../components/MapSection";
 import MobileActionBar from "../../components/MobileActionBar";
+import { trackEvent } from "../../lib/gtag";
 
 export default function ContactPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -25,7 +26,10 @@ export default function ContactPage() {
           {/* Primary CTA */}
           <button
             type="button"
-            onClick={() => setOpenModal(true)}
+            onClick={() => {
+              trackEvent("vaccine_registration_click", { source: "contact_hero" });
+              setOpenModal(true);
+            }}
             className="btn-primary mt-5 w-full rounded-xl px-4 py-3 text-sm font-semibold"
           >
             Vaccine Registration
