@@ -1,9 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import GoogleAnalytics from "../components/GoogleAnalytics";
 import AnnouncementBar from "../components/AnnouncementBar";
+import SiteShell from "../components/SiteShell";
 
 export const metadata: Metadata = {
   title: "Sheridan's Pharmacy — Dublin 15",
@@ -28,10 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-gray-50 text-gray-900">
         <GoogleAnalytics />
-        <Header nav={nav} />
-        <AnnouncementBar />
-        {children}
-        <Footer />
+        <SiteShell nav={nav} topContent={<AnnouncementBar />}>
+          {children}
+        </SiteShell>
       </body>
     </html>
   );

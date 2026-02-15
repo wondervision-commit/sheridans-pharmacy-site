@@ -74,7 +74,13 @@ function MenuIcon({ open }: { open: boolean }) {
 }
 
 
-export default function Header({ nav }: { nav: NavItem[] }) {
+export default function Header({
+  nav,
+  onVaccineClick,
+}: {
+  nav: NavItem[];
+  onVaccineClick?: () => void;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -104,17 +110,18 @@ export default function Header({ nav }: { nav: NavItem[] }) {
             </Link>
           ))}
 
-          <Link
-            href="/vaccines"
-            onClick={() =>
+          <button
+            type="button"
+            onClick={() => {
               trackEvent("vaccine_registration_click", {
                 source: "header_desktop",
-              })
-            }
+              });
+              onVaccineClick?.();
+            }}
             className="btn-primary ml-3 rounded-xl px-4 py-2 text-sm font-semibold"
           >
             Vaccine Registration
-          </Link>
+          </button>
         </nav>
 
         {/* Mobile menu button */}
@@ -153,18 +160,19 @@ export default function Header({ nav }: { nav: NavItem[] }) {
             ))}
           </div>
 
-          <Link
-            href="/vaccines"
+          <button
+            type="button"
             onClick={() => {
               trackEvent("vaccine_registration_click", {
                 source: "header_mobile",
               });
+              onVaccineClick?.();
               setOpen(false);
             }}
             className="btn-primary mt-4 block rounded-xl px-3 py-3 text-center text-sm font-semibold"
           >
             Vaccine Registration
-          </Link>
+          </button>
         </div>
       </div>
     </header>
