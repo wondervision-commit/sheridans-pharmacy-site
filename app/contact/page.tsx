@@ -97,7 +97,7 @@ export default function ContactPage() {
         <section className="mt-6 rounded-2xl border bg-white p-5">
           <div className="text-sm font-semibold">Social</div>
           <div className="mt-4">
-            <SocialLinks variant="light" />
+            <SocialLinks variant="light" location="contact_social" />
           </div>
         </section>
       </main>

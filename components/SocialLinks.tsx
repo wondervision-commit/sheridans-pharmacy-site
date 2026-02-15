@@ -1,22 +1,31 @@
+"use client";
+
 import site from "../content/site.json";
 import { FacebookIcon } from "./icons/FacebookIcon";
 import { InstagramIcon } from "./icons/InstagramIcon";
+import { trackEvent } from "../lib/gtag";
+import type { ReactNode } from "react";
 
 type Props = {
   variant?: "light" | "dark";
   className?: string;
+  location?: string;
 };
 
 function IconButton({
   href,
   label,
+  platform,
+  location,
   variant,
   children,
 }: {
   href: string;
   label: string;
+  platform: "facebook" | "instagram";
+  location: string;
   variant: "light" | "dark";
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const base =
     "flex h-12 w-12 items-center justify-center rounded-full border transition " +
@@ -41,6 +50,12 @@ function IconButton({
       target="_blank"
       rel="noreferrer"
       aria-label={label}
+      onClick={() =>
+        trackEvent("social_link_click", {
+          platform,
+          location,
+        })
+      }
       className={`${base} ${styles}`}
     >
       {children}
@@ -48,13 +63,29 @@ function IconButton({
   );
 }
 
-export default function SocialLinks({ variant = "light", className = "" }: Props) {
+export default function SocialLinks({
+  variant = "light",
+  className = "",
+  location = "unknown",
+}: Props) {
   return (
     <div className={`flex gap-3 ${className}`}>
-      <IconButton href={site.social.facebook} label="Facebook" variant={variant}>
+      <IconButton
+        href={site.social.facebook}
+        label="Facebook"
+        platform="facebook"
+        location={location}
+        variant={variant}
+      >
         <FacebookIcon />
       </IconButton>
-      <IconButton href={site.social.instagram} label="Instagram" variant={variant}>
+      <IconButton
+        href={site.social.instagram}
+        label="Instagram"
+        platform="instagram"
+        location={location}
+        variant={variant}
+      >
         <InstagramIcon />
       </IconButton>
     </div>

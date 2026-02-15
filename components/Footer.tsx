@@ -63,7 +63,7 @@ export default function Footer() {
             <div className="mt-4">
               <div className="text-sm font-semibold">Social</div>
               <div className="mt-3">
-                <SocialLinks variant="dark" />
+                <SocialLinks variant="dark" location="footer" />
               </div>
             </div>
           </div>
