@@ -5,6 +5,9 @@ import site from "../content/site.json";
 import VaccineRegistrationModal from "../components/VaccineRegistrationModal";
 import QuickActions from "../components/QuickActions";
 import OpeningHoursCard from "../components/OpeningHoursCard";
+import PageHero from "../components/PageHero";
+import MapSection from "../components/MapSection";
+import MobileActionBar from "../components/MobileActionBar";
 
 export default function Home() {
   const [openModal, setOpenModal] = useState(false);
@@ -12,13 +15,7 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-8">
-        {/* Hero */}
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            {site.businessName}
-          </h1>
-          <p className="mt-2 text-gray-600">{site.tagline}</p>
-
+        <PageHero title={site.businessName} subtitle={site.tagline}>
           {/* Primary CTA */}
           <button
             type="button"
@@ -30,7 +27,7 @@ export default function Home() {
 
           {/* Quick actions (Call + WhatsApp) */}
           <QuickActions mode="bar" className="mt-3" />
-        </section>
+        </PageHero>
 
         {/* Hours (above contact) */}
         <OpeningHoursCard className="mt-5" />
@@ -62,31 +59,11 @@ export default function Home() {
         </section>
 
         {/* Map */}
-        <section className="mt-6 overflow-hidden rounded-2xl border bg-white">
-          <iframe
-            title="Map"
-            src={site.maps.embedUrl}
-            className="h-72 w-full"
-            loading="lazy"
-          />
-        </section>
+        <MapSection embedUrl={site.maps.embedUrl} className="mt-6" />
       </main>
 
       {/* Sticky mobile action bar */}
-      <div className="mobile-bar fixed inset-x-0 bottom-0 z-40 md:hidden">
-        <div className="mx-auto max-w-5xl px-3 py-3">
-          <div className="grid grid-cols-3 gap-2">
-            <QuickActions mode="bar" className="col-span-2" />
-            <button
-              type="button"
-              onClick={() => setOpenModal(true)}
-              className="btn-primary rounded-xl px-3 py-3 text-center text-sm font-semibold"
-            >
-              Vaccine
-            </button>
-          </div>
-        </div>
-      </div>
+      <MobileActionBar onVaccineClick={() => setOpenModal(true)} />
 
       <VaccineRegistrationModal
         isOpen={openModal}

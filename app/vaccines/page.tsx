@@ -1,14 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import QuickActions from "../../components/QuickActions";
 import site from "../../content/site.json";
 import VaccineRegistrationModal from "../../components/VaccineRegistrationModal";
-
-function waLink(base: string, text: string) {
-  const encoded = encodeURIComponent(text);
-  return `${base}?text=${encoded}`;
-}
+import PageHero from "../../components/PageHero";
+import MobileActionBar from "../../components/MobileActionBar";
 
 type VaccineCard = {
   title: string;
@@ -81,19 +78,13 @@ function Accordion({ items }: { items: { q: string; a: string }[] }) {
 export default function VaccinesPage() {
   const [openModal, setOpenModal] = useState(false);
 
-  const whatsappHref = useMemo(() => {
-    return waLink(site.contact.whatsappWaMe, site.contact.whatsappPrefillText);
-  }, []);
-
   return (
     <>
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-8">
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
-          <h1 className="text-2xl font-semibold tracking-tight">Vaccines</h1>
-          <p className="mt-2 text-gray-600">
-            Register online to select a vaccine service, choose a time, and complete consent.
-          </p>
-
+        <PageHero
+          title="Vaccines"
+          subtitle="Register online to select a vaccine service, choose a time, and complete consent."
+        >
           <button
             type="button"
             onClick={() => setOpenModal(true)}
@@ -103,7 +94,7 @@ export default function VaccinesPage() {
           </button>
 
           <QuickActions className="mt-3" />
-        </section>
+        </PageHero>
 
         <section className="mt-6">
           <h2 className="mb-3 text-lg font-semibold">What’s available</h2>
@@ -162,13 +153,7 @@ export default function VaccinesPage() {
         </section>
       </main>
 
-      <div className="mobile-bar fixed inset-x-0 bottom-0 z-40 md:hidden">
-        <div className="mx-auto grid max-w-5xl grid-cols-3 gap-2 px-3 py-3">
-          <a className="btn-secondary rounded-xl px-3 py-3 text-center text-sm font-semibold" href={`tel:${site.contact.phoneTel}`}>Call</a>
-          <a className="btn-secondary rounded-xl px-3 py-3 text-center text-sm font-semibold" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a>
-          <button type="button" onClick={() => setOpenModal(true)} className="btn-primary rounded-xl px-3 py-3 text-center text-sm font-semibold">Vaccine</button>
-        </div>
-      </div>
+      <MobileActionBar onVaccineClick={() => setOpenModal(true)} />
 
       <VaccineRegistrationModal
         isOpen={openModal}

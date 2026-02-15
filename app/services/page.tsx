@@ -1,6 +1,7 @@
 import Link from "next/link";
 import services from "../../content/services.json";
 import QuickActions from "../../components/QuickActions";
+import PageHero from "../../components/PageHero";
 
 type ServiceItem = {
   id: string;
@@ -20,12 +21,10 @@ export default function ServicesPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 pb-24 pt-8">
       {/* Header */}
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
-        <h1 className="text-2xl font-semibold tracking-tight">Services</h1>
-        <p className="mt-2 text-gray-600">
-          Professional services and pricing at {data.subtitle}.
-        </p>
-
+      <PageHero
+        title="Services"
+        subtitle={`Professional services and pricing at ${data.subtitle}.`}
+      >
         <div className="mt-4 text-sm text-gray-700">
           <p>{data.intro}</p>
         </div>
@@ -48,7 +47,7 @@ export default function ServicesPage() {
             Contact
           </Link>
         </div>
-      </section>
+      </PageHero>
 
       {/* Pricing list */}
       <section className="mt-6 rounded-2xl border bg-white p-5">

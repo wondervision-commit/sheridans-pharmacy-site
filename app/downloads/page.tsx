@@ -1,4 +1,5 @@
 import downloads from "../../content/downloads.json";
+import PageHero from "../../components/PageHero";
 
 type DownloadItem = {
   title: string;
@@ -16,12 +17,10 @@ export default function DownloadsPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-4 pb-24 pt-8">
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
-        <h1 className="text-2xl font-semibold tracking-tight">Downloads</h1>
-        <p className="mt-2 text-gray-600">
-          Vaccine information and consent forms available as PDFs.
-        </p>
-      </section>
+      <PageHero
+        title="Downloads"
+        subtitle="Vaccine information and consent forms available as PDFs."
+      />
 
       <div className="mt-6 space-y-8">
         {data.categories.map((category) => (

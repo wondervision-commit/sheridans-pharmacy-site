@@ -5,6 +5,7 @@ import site from "../../content/site.json";
 import staff from "../../content/staff.json";
 import StaffCard from "../../components/StaffCard";
 import QuickActions from "../../components/QuickActions";
+import PageHero from "../../components/PageHero";
 
 export default function AboutPage() {
   const sortedStaff = [...staff].sort(
@@ -14,10 +15,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 pb-24 pt-8">
       {/* Hero */}
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
-        <h1 className="text-2xl font-semibold tracking-tight">About Us</h1>
-        <p className="mt-2 text-gray-600">{site.tagline}</p>
-
+      <PageHero title="About Us" subtitle={site.tagline}>
         <div className="mt-4 text-sm text-gray-700">
           <p>
             We’re a local, community-focused pharmacy based in{" "}
@@ -46,7 +44,7 @@ export default function AboutPage() {
             Contact
           </Link>
         </div>
-      </section>
+      </PageHero>
 
       {/* Team */}
       <section className="mt-6 rounded-2xl border bg-white p-5">

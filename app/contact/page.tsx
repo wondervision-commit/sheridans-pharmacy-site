@@ -7,6 +7,9 @@ import VaccineRegistrationModal from "../../components/VaccineRegistrationModal"
 import QuickActions from "../../components/QuickActions";
 import SocialLinks from "../../components/SocialLinks";
 import OpeningHoursCard from "../../components/OpeningHoursCard";
+import PageHero from "../../components/PageHero";
+import MapSection from "../../components/MapSection";
+import MobileActionBar from "../../components/MobileActionBar";
 
 export default function ContactPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -15,12 +18,10 @@ export default function ContactPage() {
     <>
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-8">
         {/* Page header */}
-        <section className="rounded-2xl border bg-white p-5 shadow-sm">
-          <h1 className="text-2xl font-semibold tracking-tight">Contact</h1>
-          <p className="mt-2 text-gray-600">
-            Call, email, WhatsApp, or find us in {site.address.cityRegion}.
-          </p>
-
+        <PageHero
+          title="Contact"
+          subtitle={`Call, email, WhatsApp, or find us in ${site.address.cityRegion}.`}
+        >
           {/* Primary CTA */}
           <button
             type="button"
@@ -32,7 +33,7 @@ export default function ContactPage() {
 
           {/* Quick actions */}
           <QuickActions className="mt-3" />
-        </section>
+        </PageHero>
 
         {/* Contact details */}
         <section className="mt-6 rounded-2xl border bg-white p-5">
@@ -86,14 +87,7 @@ export default function ContactPage() {
         <OpeningHoursCard className="mt-6" />
 
         {/* Map */}
-        <section className="mt-6 overflow-hidden rounded-2xl border bg-white">
-          <iframe
-            title="Map"
-            src={site.maps.embedUrl}
-            className="h-72 w-full"
-            loading="lazy"
-          />
-        </section>
+        <MapSection embedUrl={site.maps.embedUrl} className="mt-6" />
 
         {/* Social */}
         <section className="mt-6 rounded-2xl border bg-white p-5">
@@ -105,20 +99,7 @@ export default function ContactPage() {
       </main>
 
       {/* Sticky mobile action bar */}
-    <div className="mobile-bar fixed inset-x-0 bottom-0 z-40 md:hidden">
-        <div className="mx-auto max-w-5xl px-3 py-3">
-            <div className="grid grid-cols-3 gap-2">
-            <QuickActions mode="bar" className="col-span-2" />
-            <button
-                type="button"
-                onClick={() => setOpenModal(true)}
-                className="btn-primary rounded-xl px-3 py-3 text-center text-sm font-semibold"
-            >
-                Vaccine
-            </button>
-            </div>
-        </div>
-    </div>
+      <MobileActionBar onVaccineClick={() => setOpenModal(true)} />
 
 
       <VaccineRegistrationModal

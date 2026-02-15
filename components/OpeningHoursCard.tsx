@@ -8,19 +8,19 @@ type OpeningHoursShape = Record<string, string | undefined> & {
 };
 
 function getHoursValue(hours: OpeningHoursShape, key: string) {
-  // supports either lowercase keys (mon) or uppercase (Mon)
-  return (hours as any)[key] ?? (hours as any)[key.toLowerCase()] ?? (hours as any)[key[0].toUpperCase() + key.slice(1)];
+  return (
+    hours[key] ??
+    hours[key.toLowerCase()] ??
+    hours[key[0].toUpperCase() + key.slice(1)]
+  );
 }
 
 function normalizeRange(range: string) {
-  // Handles “09:00–19:00” (en dash) and “09:00-19:00” (hyphen)
-  const r = range.replace(/\s+/g, "");
-  const parts = r.split("–").length === 2 ? r.split("–") : r.split("-");
-  if (parts.length !== 2) return null;
+  const compact = range.replace(/\s+/g, "");
+  const matches = compact.match(/(\d{2}:\d{2}).*(\d{2}:\d{2})/);
+  if (!matches) return null;
 
-  const [start, end] = parts;
-  // basic validation
-  if (!/^\d{2}:\d{2}$/.test(start) || !/^\d{2}:\d{2}$/.test(end)) return null;
+  const [, start, end] = matches;
   return { start, end };
 }
 
@@ -36,8 +36,6 @@ function isOpenNow(range: string, now: Date) {
   const mins = now.getHours() * 60 + now.getMinutes();
   const start = toMinutes(normalized.start);
   const end = toMinutes(normalized.end);
-
-  // Assumes same-day opening (no overnight)
   return mins >= start && mins < end;
 }
 
@@ -52,7 +50,6 @@ const DAYS: { key: string; label: string }[] = [
 ];
 
 function todayKeyLocal(now: Date) {
-  // JS: 0=Sun, 1=Mon...
   const idx = now.getDay();
   return idx === 0 ? "sun" : ["mon", "tue", "wed", "thu", "fri", "sat"][idx - 1];
 }
@@ -66,11 +63,10 @@ export default function OpeningHoursCard({
 }) {
   const hours = site.openingHours as OpeningHoursShape;
 
-  // Use local time (Ireland in your case). If server timezone differs, this component is client-side.
   const now = new Date();
   const today = todayKeyLocal(now);
 
-  const todayValue = getHoursValue(hours, today) ?? "—";
+  const todayValue = getHoursValue(hours, today) ?? "--";
   const openState =
     typeof todayValue === "string" && todayValue.toLowerCase() !== "closed"
       ? isOpenNow(todayValue, now)
@@ -86,18 +82,10 @@ export default function OpeningHoursCard({
   const notes = (hours.notes ?? hours.Notes)?.trim();
 
   return (
-    <section
-      className={[
-        "rounded-2xl border bg-white p-5",
-        "shadow-sm",
-        className,
-      ].join(" ")}
-    >
-      {/* Header row */}
+    <section className={["rounded-2xl border bg-white p-5", "shadow-sm", className].join(" ")}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-sm font-semibold text-gray-900">{title}</div>
-          
         </div>
 
         {status ? (
@@ -112,14 +100,12 @@ export default function OpeningHoursCard({
         ) : null}
       </div>
 
-      {/* Subtle brand accent */}
       <div className="mt-4 h-1 w-full rounded-full bg-gradient-to-r from-[var(--brand-blue)]/35 via-[var(--brand-blue)]/12 to-transparent" />
 
-      {/* Hours list */}
       <div className="mt-4 rounded-2xl bg-gray-50 p-4">
         <div className="grid gap-2">
           {DAYS.map((d) => {
-            const value = getHoursValue(hours, d.key) ?? "—";
+            const value = getHoursValue(hours, d.key) ?? "--";
             const isToday = d.key === today;
 
             return (
@@ -161,9 +147,7 @@ export default function OpeningHoursCard({
           })}
         </div>
 
-        {notes ? (
-          <div className="mt-3 text-xs text-gray-600">{notes}</div>
-        ) : null}
+        {notes ? <div className="mt-3 text-xs text-gray-600">{notes}</div> : null}
       </div>
     </section>
   );

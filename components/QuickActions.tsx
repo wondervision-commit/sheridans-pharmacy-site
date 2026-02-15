@@ -5,11 +5,7 @@ import site from "../content/site.json";
 import PhoneIcon from "./icons/PhoneIcon";
 import WhatsappIcon from "./icons/WhatsappIcon";
 import LocationIcon from "./icons/LocationIcon";
-
-function waLink(base: string, text: string) {
-  const encoded = encodeURIComponent(text);
-  return `${base}?text=${encoded}`;
-}
+import { waLink } from "../lib/links";
 
 type QuickActionsMode = "full" | "bar";
 
